@@ -1,0 +1,22 @@
+name: Build and Deploy React App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    uses: guigutox/GA-ReusableWorkflows/.github/workflows/ci-react.yml@main
+    with:
+      node_version: "24"
+
+  # deploy:
+  #   needs: build
+  #   uses: UppaDigital/GA-ReusableWorkflows/.github/workflows/cd-gcp-bucket.yml@main
+  #   with:
+  #     bucket_name: ${{ vars.GCP_BUCKET_NAME }}
+  #     project_id: ${{ vars.GCP_PROJECT_ID }}
+  #     artifact_name: ${{ needs.build.outputs.artifact_name }}
+  #   secrets:
+  #     GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
